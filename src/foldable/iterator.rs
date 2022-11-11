@@ -1,4 +1,5 @@
 use super::Foldable;
+use crate::function::*;
 
 impl<T, I> Foldable<T> for I
     where I: Iterator<Item=T> + DoubleEndedIterator
@@ -8,7 +9,7 @@ impl<T, I> Foldable<T> for I
     }
 
     fn foldr<ACC, F>(self, f: F, acc: ACC) -> ACC where F: Fn(T, ACC) -> ACC {
-        self.rev().fold(acc, |acc, x| f(x, acc))//TODO flip
+        self.rev().fold(acc, flip(f))
     }
 }
 
