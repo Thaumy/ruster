@@ -15,3 +15,4 @@ pub fn fmap<T, F, B>(t: T, f: F) -> T::FmapOut<B>
 
 pub mod option;
 pub mod result;
+pub mod vec;
