@@ -15,7 +15,7 @@ pub fn pure<T, X>(x: X) -> T
     T::pure(x)
 }
 
-fn ap<T, A: Copy, B>(t: T, a: T::ApTo<A>) -> T::ApOut<B>
+pub fn ap<T, A: Copy, B>(t: T, a: T::ApTo<A>) -> T::ApOut<B>
     where
         T: Applicative,
         T::Val: Fn(<T::ApTo<A> as Functor>::Val) -> <T::ApOut<B> as Functor>::Val
