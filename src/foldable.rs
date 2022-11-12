@@ -22,21 +22,21 @@ pub trait Foldable<T> {
     //TODO fold
 }
 
-fn foldl<T, X, ACC, F>(t: T, f: F, acc: ACC) -> ACC
+pub fn foldl<T, X, ACC, F>(t: T, f: F, acc: ACC) -> ACC
     where F: Fn(ACC, X) -> ACC,
           T: Foldable<X>
 {
     t.foldl(f, acc)
 }
 
-fn foldr<T, X, ACC, F>(t: T, f: F, acc: ACC) -> ACC
+pub fn foldr<T, X, ACC, F>(t: T, f: F, acc: ACC) -> ACC
     where F: Fn(X, ACC) -> ACC,
           T: Foldable<X>
 {
     t.foldr(f, acc)
 }
 
-fn fold_map<T, X, F, M>(t: T, f: F) -> M
+pub fn fold_map<T, X, F, M>(t: T, f: F) -> M
     where F: Fn(X) -> M,
           M: Monoid,
           T: Foldable<X> + Sized
