@@ -2,7 +2,7 @@ use crate::functor::Functor;
 use super::Applicative;
 
 impl<T, E> Applicative for Result<T, E> {
-    type ApTo<A> = Result<A, E>;
+    type ApTo<A: Clone> = Result<A, E>;
     type ApOut<B> = Result<B, E>;
 
     fn pure(a: T) -> Self {

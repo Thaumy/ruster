@@ -2,7 +2,7 @@ use crate::functor::Functor;
 use super::Applicative;
 
 impl<T> Applicative for Option<T> {
-    type ApTo<A> = Option<A>;
+    type ApTo<A: Clone> = Option<A>;
     type ApOut<B> = Option<B>;
 
     fn pure(a: T) -> Self {

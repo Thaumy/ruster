@@ -14,13 +14,11 @@ mod tests {
     fn mempty_test() {
         {
             let a = Vec::<i32>::mempty();
-            let z: Vec<i32> = vec![];
-            assert_eq!(z, a);
+            assert_eq!(Vec::<i32>::new(), a);
         }
         {
             let a: Vec::<i32> = mempty();
-            let z: Vec<i32> = vec![];
-            assert_eq!(z, a);
+            assert_eq!(Vec::<i32>::new(), a);
         }
     }
 
