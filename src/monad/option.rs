@@ -33,19 +33,17 @@ mod test {
     fn mono_bind_test() {
         {
             let a = Some(1).bind(|x| Some(x + 1));
-            assert_eq!(Some(2), a)
-        }
-        {
-            let a = None.bind(|x: i32| Some(x + 1));
-            assert_eq!(None, a)
+            assert_eq!(Some(2), a);
+
+            let b = None.bind(|x: i32| Some(x + 1));
+            assert_eq!(None, b)
         }
         {
             let a = bind(Some(1), |x| Some(x + 1));
-            assert_eq!(Some(2), a)
-        }
-        {
-            let a = bind(None, |x: i32| Some(x + 1));
-            assert_eq!(None, a)
+            assert_eq!(Some(2), a);
+
+            let b = bind(None, |x: i32| Some(x + 1));
+            assert_eq!(None, b)
         }
     }
 
@@ -53,19 +51,17 @@ mod test {
     fn poly_bind_test() {
         {
             let a = Some(1).bind(|x| Some(x.to_string()));
-            assert_eq!(Some("1".to_string()), a)
-        }
-        {
-            let a = None.bind(|x: i32| Some(x.to_string()));
-            assert_eq!(None, a)
+            assert_eq!(Some("1".to_string()), a);
+
+            let b = None.bind(|x: i32| Some(x.to_string()));
+            assert_eq!(None, b)
         }
         {
             let a = bind(Some(1), |x| Some(x.to_string()));
-            assert_eq!(Some("1".to_string()), a)
-        }
-        {
-            let a = bind(None, |x: i32| Some(x.to_string()));
-            assert_eq!(None, a)
+            assert_eq!(Some("1".to_string()), a);
+
+            let b = bind(None, |x: i32| Some(x.to_string()));
+            assert_eq!(None, b)
         }
     }
 }
