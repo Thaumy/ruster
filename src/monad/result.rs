@@ -52,7 +52,7 @@ mod test {
     #[test]
     fn poly_bind_test() {
         {
-            let a: Result<String, String> = Ok(1).bind(|x| Ok(1.to_string()));
+            let a: Result<String, String> = Ok(1).bind(|x| Ok(x.to_string()));
             assert_eq!(Ok("1".to_string()), a)
         }
         {
@@ -60,7 +60,7 @@ mod test {
             assert_eq!(Err(""), a)
         }
         {
-            let a: Result<String, String> = bind(Ok(1), |x| Ok(1.to_string()));
+            let a: Result<String, String> = bind(Ok(1), |x| Ok(x.to_string()));
             assert_eq!(Ok("1".to_string()), a)
         }
         {

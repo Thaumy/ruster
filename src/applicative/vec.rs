@@ -31,7 +31,7 @@ mod tests {
         assert_eq!(vec![1], a);
 
         let b: Vec<i32> = pure(1);
-        assert_eq!(vec![1], a);
+        assert_eq!(vec![1], b);
     }
 
     #[test]

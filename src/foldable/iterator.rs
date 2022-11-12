@@ -16,7 +16,6 @@ impl<T, I> Foldable<T> for I
 #[cfg(test)]
 mod test {
     use crate::foldable::*;
-    use crate::monoid::*;
 
     #[test]
     fn foldl_test() {

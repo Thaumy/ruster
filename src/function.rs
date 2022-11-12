@@ -35,7 +35,6 @@ pub mod sized;
 
 #[cfg(test)]
 mod test {
-    use std::ops::Add;
     use crate::function::*;
 
     #[test]

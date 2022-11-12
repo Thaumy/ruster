@@ -27,6 +27,7 @@ pub fn bind<T, F, B>(t: T, f: F) -> T::BindOut<B>
     t.bind(f)
 }
 
+pub mod future;
 pub mod option;
 pub mod result;
 pub mod vec;

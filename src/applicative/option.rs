@@ -29,7 +29,7 @@ mod tests {
         assert_eq!(Some(1), a);
 
         let b: Option<i32> = pure(1);
-        assert_eq!(Some(1), a);
+        assert_eq!(Some(1), b);
     }
 
     #[test]

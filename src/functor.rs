@@ -13,6 +13,7 @@ pub fn fmap<T, F, B>(t: T, f: F) -> T::FmapOut<B>
     t.fmap(f)
 }
 
+pub mod future;
 pub mod option;
 pub mod result;
 pub mod vec;

@@ -29,7 +29,7 @@ mod tests {
         assert_eq!(Ok(1), a);
 
         let b: Result<i32, String> = pure(1);
-        assert_eq!(Ok(1), a);
+        assert_eq!(Ok(1), b);
     }
 
     #[test]

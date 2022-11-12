@@ -52,7 +52,7 @@ mod test {
     #[test]
     fn poly_bind_test() {
         {
-            let a = Some(1).bind(|x| Some(1.to_string()));
+            let a = Some(1).bind(|x| Some(x.to_string()));
             assert_eq!(Some("1".to_string()), a)
         }
         {
@@ -60,7 +60,7 @@ mod test {
             assert_eq!(None, a)
         }
         {
-            let a = bind(Some(1), |x| Some(1.to_string()));
+            let a = bind(Some(1), |x| Some(x.to_string()));
             assert_eq!(Some("1".to_string()), a)
         }
         {
