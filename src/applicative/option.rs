@@ -13,7 +13,7 @@ impl<T> Applicative for Option<T> {
         where T: Fn(A) -> B
     {
         match self {
-            Some(f) => a.fmap(f),
+            Some(f) => a.fmap(&f),
             None => None
         }
     }

@@ -1,14 +1,31 @@
 use super::Foldable;
 use crate::function::*;
 
-impl<T, I> Foldable<T> for I
-    where I: Iterator<Item=T> + DoubleEndedIterator
+/*
+impl<X, T> Foldable<X> for T
+    where T: Iterator<Item=X> + DoubleEndedIterator
 {
-    fn foldl<ACC, F>(self, f: F, acc: ACC) -> ACC where F: Fn(ACC, T) -> ACC {
+    fn foldl<ACC, F>(self, f: F, acc: ACC) -> ACC where F: Fn(ACC, X) -> ACC {
         self.fold(acc, f)
     }
 
-    fn foldr<ACC, F>(self, f: F, acc: ACC) -> ACC where F: Fn(T, ACC) -> ACC {
+    fn foldr<ACC, F>(self, f: F, acc: ACC) -> ACC where F: Fn(X, ACC) -> ACC {
+        self.rev().fold(acc, flip(f))
+    }
+}*/
+
+/*
+impl<X> Foldable<X> for &mut dyn Iterator<Item=X> where Self: Sized + DoubleEndedIterator
+{
+    fn foldl<ACC, F>(self, f: F, acc: ACC) -> ACC
+        where F: Fn(ACC, X) -> ACC
+    {
+        self.fold(acc, f)
+    }
+
+    fn foldr<ACC, F>(self, f: F, acc: ACC) -> ACC
+        where F: Fn(X, ACC) -> ACC
+    {
         self.rev().fold(acc, flip(f))
     }
 }
@@ -68,4 +85,4 @@ mod test {
             assert_eq!(vec![4, 3, 2], b);
         }
     }
-}
+}*/
