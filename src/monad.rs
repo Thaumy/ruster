@@ -10,7 +10,7 @@ pub trait Monad: Applicative {
         <Self as Applicative>::pure(x)
     }
 
-    fn bind<F, B>(self, f: F) -> Self::BindOut<B>
+    fn bind<F, B>(self, f: &F) -> Self::BindOut<B>
         where F: Fn(Self::Val) -> Self::BindOut<B>;
 }
 
@@ -20,7 +20,7 @@ pub fn unit<T, X>(x: X) -> T
     T::unit(x)
 }
 
-pub fn bind<T, F, B>(t: T, f: F) -> T::BindOut<B>
+pub fn bind<T, F, B>(t: T, f: &F) -> T::BindOut<B>
     where T: Monad,
           F: Fn(T::Val) -> T::BindOut<B>
 {

@@ -3,7 +3,7 @@ use crate::monad::Monad;
 impl<T> Monad for Vec<T> {
     type BindOut<B> = Vec<B>;
 
-    fn bind<F, B>(self, f: F) -> Vec<B>
+    fn bind<F, B>(self, f: &F) -> Vec<B>
         where F: Fn(T) -> Vec<B>
     {
         let mut b = Vec::with_capacity(self.len());//TODO
@@ -34,7 +34,7 @@ mod test {
     fn mono_bind_test() {
         {
             let a = vec![1, 2, 3]
-                .bind(|x| vec![x * 1, x * 2, x * 3]);
+                .bind(&|x| vec![x * 1, x * 2, x * 3]);
             assert_eq!(
                 vec![1, 2, 3,
                      2, 4, 6,
@@ -44,13 +44,13 @@ mod test {
         }
         {
             let a = Vec::<i32>::new()
-                .bind(|x| vec![x * 1, x * 2, x * 3]);
+                .bind(&|x| vec![x * 1, x * 2, x * 3]);
             assert_eq!(Vec::<i32>::new(), a)
         }
         {
             let a = bind(
                 vec![1, 2, 3],
-                |x| vec![x * 1, x * 2, x * 3],
+                &|x| vec![x * 1, x * 2, x * 3],
             );
             assert_eq!(
                 vec![1, 2, 3,
@@ -62,30 +62,47 @@ mod test {
         {
             let a = bind(
                 Vec::<i32>::new(),
-                |x| vec![x * 1, x * 2, x * 3],
+                &|x| vec![x * 1, x * 2, x * 3],
             );
             assert_eq!(Vec::<i32>::new(), a)
         }
     }
 
-    /*
     #[test]
     fn poly_bind_test() {
+        let f = |x: i32| {
+            let g = |x: &i32, str: &str| {
+                let mut s = x.to_string();
+                s.push_str(str);
+                s
+            };
+            vec![g(&x, "a"), g(&x, "b"), g(&x, "c")]
+        };
         {
-            let a: Result<String, String> = Ok(1).bind(|x| Ok(1.to_string()));
-            assert_eq!(Ok("1".to_string()), a)
+            let a = vec![1, 2, 3].bind(&f);
+            assert_eq!(
+                vec!["1a", "1b", "1c",
+                     "2a", "2b", "2c",
+                     "3a", "3b", "3c"],
+                a
+            )
         }
         {
-            let a = Err("").bind(|x: i32| Ok(x.to_string()));
-            assert_eq!(Err(""), a)
+            let a = Vec::<i32>::new().bind(&f);
+            assert_eq!(Vec::<String>::new(), a)
         }
         {
-            let a: Result<String, String> = bind(Ok(1), |x| Ok(1.to_string()));
-            assert_eq!(Ok("1".to_string()), a)
+            let a = bind(vec![1, 2, 3], &f);
+            assert_eq!(
+                vec!["1a", "1b", "1c",
+                     "2a", "2b", "2c",
+                     "3a", "3b", "3c"],
+                a
+            )
         }
         {
-            let a = bind(Err(""), |x: i32| Ok(x.to_string()));
-            assert_eq!(Err(""), a)
+            let a = bind(Vec::<i32>::new(), &f);
+            assert_eq!(Vec::<String>::new(), a)
         }
-    }*/
+    }
 }

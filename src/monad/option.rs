@@ -3,7 +3,7 @@ use crate::monad::Monad;
 impl<T> Monad for Option<T> {
     type BindOut<B> = Option<B>;
 
-    fn bind<F, B>(self, f: F) -> Option<B>
+    fn bind<F, B>(self, f: &F) -> Option<B>
         where F: Fn(T) -> Option<B>
     {
         match self {
@@ -31,36 +31,38 @@ mod test {
 
     #[test]
     fn mono_bind_test() {
+        let f = |x: i32| Some(x + 1);
         {
-            let a = Some(1).bind(|x| Some(x + 1));
+            let a = Some(1).bind(&f);
             assert_eq!(Some(2), a);
 
-            let b = None.bind(|x: i32| Some(x + 1));
+            let b = None.bind(&f);
             assert_eq!(None, b)
         }
         {
-            let a = bind(Some(1), |x| Some(x + 1));
+            let a = bind(Some(1), &f);
             assert_eq!(Some(2), a);
 
-            let b = bind(None, |x: i32| Some(x + 1));
+            let b = bind(None, &f);
             assert_eq!(None, b)
         }
     }
 
     #[test]
     fn poly_bind_test() {
+        let f = |x: i32| Some(x.to_string());
         {
-            let a = Some(1).bind(|x| Some(x.to_string()));
+            let a = Some(1).bind(&f);
             assert_eq!(Some("1".to_string()), a);
 
-            let b = None.bind(|x: i32| Some(x.to_string()));
+            let b = None.bind(&f);
             assert_eq!(None, b)
         }
         {
-            let a = bind(Some(1), |x| Some(x.to_string()));
+            let a = bind(Some(1), &f);
             assert_eq!(Some("1".to_string()), a);
 
-            let b = bind(None, |x: i32| Some(x.to_string()));
+            let b = bind(None, &f);
             assert_eq!(None, b)
         }
     }

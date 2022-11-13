@@ -5,7 +5,7 @@ impl<A> Functor for Vec<A>
     type Val = A;
     type FmapOut<B> = Vec<B>;
 
-    fn fmap<F, B>(self, f: F) -> Self::FmapOut<B>
+    fn fmap<F, B>(self, f: &F) -> Self::FmapOut<B>
         where F: Fn(A) -> B
     {
         let mut b = Vec::with_capacity(self.len());
@@ -24,12 +24,12 @@ mod tests {
     fn mono_fmap_test() {
         {
             let a = vec![1, 2, 3]
-                .fmap(|x| x + 1);
+                .fmap(&|x| x + 1);
             assert_eq!(vec![2, 3, 4], a);
         }
         {
             let a = vec![]
-                .fmap(|x: i32| x + 1);
+                .fmap(&|x: i32| x + 1);
             let z: Vec<i32> = vec![];
             assert_eq!(z, a);
         }
@@ -39,12 +39,12 @@ mod tests {
     fn poly_fmap_test() {
         {
             let a = vec![1, 2, 3]
-                .fmap(|x| x.to_string());
+                .fmap(&|x| x.to_string());
             assert_eq!(vec!["1", "2", "3"], a);
         }
         {
             let a = vec![]
-                .fmap(|x: i32| x.to_string());
+                .fmap(&|x: i32| x.to_string());
             let z: Vec<String> = vec![];
             assert_eq!(z, a);
         }

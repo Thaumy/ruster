@@ -13,7 +13,7 @@ impl<T, E> Applicative for Result<T, E> {
         where T: Fn(A) -> B
     {
         match self {
-            Ok(f) => a.fmap(f),
+            Ok(f) => a.fmap(&f),
             Err(e) => Err(e)
         }
     }
