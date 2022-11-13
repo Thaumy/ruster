@@ -1,11 +1,14 @@
+use std::fmt::Debug;
 use std::future::Future;
 use super::Functor;
+use crate::functor::boxed;
 
 /*
 impl<A> Functor for dyn Future<Output=A>
 {
     type Val = A;
-    type FmapOut<B> = Box<dyn Future<Output=B>>;
+
+    type FmapOut<B> = impl Future<Output=B>;
 
     fn fmap<F, B>(self, f: F) -> Self::FmapOut<B> where F: Fn(Self::Val) -> B {
         todo!()

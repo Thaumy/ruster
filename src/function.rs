@@ -1,3 +1,7 @@
+pub fn id<A>(a: A) -> A {
+    a
+}
+
 //TODO T.flip() ext?
 pub fn flip<X, Y, Z>(f: impl Fn(X, Y) -> Z) -> impl Fn(Y, X) -> Z
 {
@@ -36,6 +40,12 @@ pub mod sized;
 #[cfg(test)]
 mod test {
     use crate::function::*;
+
+    #[test]
+    fn id_test() {
+        let a = 1;
+        assert_eq!(1, id(a))
+    }
 
     #[test]
     fn flip_test() {
