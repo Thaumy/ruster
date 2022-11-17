@@ -1,3 +1,5 @@
+#![feature(type_alias_impl_trait)]
+
 pub mod functor;
 pub mod applicative;
 pub mod monoid;

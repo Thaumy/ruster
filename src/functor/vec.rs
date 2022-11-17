@@ -22,9 +22,9 @@ mod tests {
 
     #[test]
     fn mono_fmap_test() {
+        let f = |x: i32| x + 1;
         {
-            let a = vec![1, 2, 3]
-                .fmap(&|x| x + 1);
+            let a = vec![1, 2, 3].fmap(&f);
             assert_eq!(vec![2, 3, 4], a);
         }
         {
@@ -37,14 +37,13 @@ mod tests {
 
     #[test]
     fn poly_fmap_test() {
+        let f = |x: i32| x.to_string();
         {
-            let a = vec![1, 2, 3]
-                .fmap(&|x| x.to_string());
+            let a = vec![1, 2, 3].fmap(&f);
             assert_eq!(vec!["1", "2", "3"], a);
         }
         {
-            let a = vec![]
-                .fmap(&|x: i32| x.to_string());
+            let a = vec![].fmap(&f);
             let z: Vec<String> = vec![];
             assert_eq!(z, a);
         }

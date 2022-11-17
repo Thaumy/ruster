@@ -1,20 +1,21 @@
 use crate::monoid::Monoid;
 
-pub trait Foldable<T> {
+pub trait Foldable {
+    type Item;
+
     //TODO foldr impl foldl
-    fn foldl<ACC, F>(self, f: F, acc: ACC) -> ACC
-        where F: Fn(ACC, T) -> ACC;
+    fn foldl<F, ACC>(&self, f: &F, acc: ACC) -> ACC
+        where F: Fn(ACC, &Self::Item) -> ACC;
 
-    fn foldr<ACC, F>(self, f: F, acc: ACC) -> ACC
-        where F: Fn(T, ACC) -> ACC;
+    fn foldr<F, ACC>(&self, f: &F, acc: ACC) -> ACC
+        where F: Fn(&Self::Item, ACC) -> ACC;
 
-    fn fold_map<F, M>(self, f: F) -> M
-        where F: Fn(T) -> M,
+    fn fold_map<F, M>(&self, f: &F) -> M
+        where F: Fn(&Self::Item) -> M,
               M: Monoid,
-              Self: Sized
     {
         self.foldr(
-            |x, acc| acc.mappend(f(x)),
+            &|x, acc: M| f(x).mappend(acc),
             M::mempty(),
         )
     }
@@ -22,29 +23,26 @@ pub trait Foldable<T> {
     //TODO fold
 }
 
-pub fn foldl<T, X, ACC, F>(t: T, f: F, acc: ACC) -> ACC
-    where F: Fn(ACC, X) -> ACC,
-          T: Foldable<X>
+pub fn foldl<T, F, ACC>(t: &T, f: &F, acc: ACC) -> ACC
+    where F: Fn(ACC, &T::Item) -> ACC,
+          T: Foldable
 {
     t.foldl(f, acc)
 }
 
-pub fn foldr<T, X, ACC, F>(t: T, f: F, acc: ACC) -> ACC
-    where F: Fn(X, ACC) -> ACC,
-          T: Foldable<X>
+pub fn foldr<T, F, ACC>(t: &T, f: &F, acc: ACC) -> ACC
+    where F: Fn(&T::Item, ACC) -> ACC,
+          T: Foldable
 {
     t.foldr(f, acc)
 }
 
-pub fn fold_map<T, X, F, M>(t: T, f: F) -> M
-    where F: Fn(X) -> M,
+pub fn fold_map<T, F, M>(t: &T, f: &F) -> M
+    where F: Fn(&T::Item) -> M,
           M: Monoid,
-          T: Foldable<X> + Sized
+          T: Foldable
 {
-    t.foldr(
-        |x, acc| acc.mappend(f(x)),
-        M::mempty(),
-    )
+    t.fold_map(f)
 }
 
-pub mod iterator;
+pub mod vec;

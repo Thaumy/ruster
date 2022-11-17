@@ -17,24 +17,26 @@ mod tests {
 
     #[test]
     fn mono_fmap_test() {
+        let f = |x: i32| x + 1;
         {
-            let a = Box::new(1).fmap(&|x| x + 1);
+            let a = Box::new(1).fmap(&f);
             assert_eq!(Box::new(2), a);
         }
         {
-            let a = fmap(Box::new(1), &|x| x + 1);
+            let a = fmap(Box::new(1), &f);
             assert_eq!(Box::new(2), a);
         }
     }
 
     #[test]
     fn poly_fmap_test() {
+        let f = |x: i32| x.to_string();
         {
-            let a = Box::new(1).fmap(&|x| x.to_string());
+            let a = Box::new(1).fmap(&f);
             assert_eq!(Box::new("1".to_string()), a);
         }
         {
-            let a = fmap(Box::new(1), &|x| x.to_string());
+            let a = fmap(Box::new(1), &f);
             assert_eq!(Box::new("1".to_string()), a);
         }
     }
