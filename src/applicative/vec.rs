@@ -116,7 +116,7 @@ mod tests {
                 vec!["1a", "2a", "3a",
                      "1b", "2b", "3b",
                      "1c", "2c", "3c"],
-                ap(a,vec![1, 2, 3])
+                ap(a, vec![1, 2, 3])
             );
 
             let b = ap(Vec::<fn(i32) -> String>::new(), vec![1]);

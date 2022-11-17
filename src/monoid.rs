@@ -19,6 +19,5 @@ pub fn mappend<T>(a: T, b: T) -> T
     a.mappend(b)
 }
 
-pub mod array;
 pub mod string;
 pub mod vec;

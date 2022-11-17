@@ -20,28 +20,31 @@ mod tests {
 
     #[test]
     fn mono_fmap_test() {
+        let f = |x: i32| x + 1;
         {
-            let a = Some(1).fmap(&|x| x + 1);
+            let a = Some(1).fmap(&f);
             assert_eq!(Some(2), a);
 
-            let b = None.fmap(&|x: i32| x + 1);
+            let b = None.fmap(&f);
             assert_eq!(None, b);
         }
         {
-            let a = fmap(Some(1), &|x| x + 1);
+            let a = fmap(Some(1), &f);
             assert_eq!(Some(2), a);
 
-            let b = fmap(None, &|x: i32| x + 1);
+            let b = fmap(None, &f);
             assert_eq!(None, b);
         }
     }
 
     #[test]
     fn poly_fmap_test() {
-        let a = fmap(Some(1), &|x| x.to_string());
+        let f = |x: i32| x.to_string();
+
+        let a = fmap(Some(1), &f);
         assert_eq!(Some("1".to_string()), a);
 
-        let b = fmap(None, &|x: i32| x.to_string());
+        let b = fmap(None, &f);
         assert_eq!(None, b);
     }
 }
