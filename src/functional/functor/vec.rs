@@ -18,7 +18,7 @@ impl<A> Functor for Vec<A>
 
 #[cfg(test)]
 mod tests {
-    use crate::functor::*;
+    use crate::functional::functor::*;
 
     #[test]
     fn mono_fmap_test() {

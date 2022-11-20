@@ -1,4 +1,4 @@
-use crate::functor::Functor;
+use crate::functional::functor::Functor;
 use super::Applicative;
 
 impl<T, E> Applicative for Result<T, E> {
@@ -21,7 +21,7 @@ impl<T, E> Applicative for Result<T, E> {
 
 #[cfg(test)]
 mod tests {
-    use crate::applicative::*;
+    use crate::functional::applicative::*;
 
     #[test]
     fn pure_test() {

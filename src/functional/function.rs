@@ -39,7 +39,7 @@ pub mod sized;
 
 #[cfg(test)]
 mod test {
-    use crate::function::*;
+    use crate::functional::function::*;
 
     #[test]
     fn id_test() {

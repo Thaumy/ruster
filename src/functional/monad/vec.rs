@@ -1,4 +1,4 @@
-use crate::monad::Monad;
+use crate::functional::monad::Monad;
 
 impl<T> Monad for Vec<T> {
     type BindOut<B> = Vec<B>;
@@ -16,7 +16,7 @@ impl<T> Monad for Vec<T> {
 
 #[cfg(test)]
 mod test {
-    use crate::monad::*;
+    use crate::functional::monad::*;
 
     #[test]
     fn unit_test() {

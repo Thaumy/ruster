@@ -1,6 +1,6 @@
 use std::borrow::Borrow;
-use crate::foldable::Foldable;
-use crate::function::flip;
+use crate::functional::foldable::Foldable;
+use crate::functional::function::flip;
 
 impl<A> Foldable for Vec<A> {
     type Item = A;
@@ -20,8 +20,8 @@ impl<A> Foldable for Vec<A> {
 
 #[cfg(test)]
 mod test {
-    use crate::foldable::*;
-    use crate::monoid::*;
+    use crate::functional::foldable::*;
+    use crate::functional::monoid::*;
 
     #[test]
     fn foldl_test() {

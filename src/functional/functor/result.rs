@@ -16,7 +16,7 @@ impl<A, E> Functor for Result<A, E> {
 
 #[cfg(test)]
 mod tests {
-    use crate::functor::*;
+    use crate::functional::functor::*;
 
     #[test]
     fn mono_fmap_test() {

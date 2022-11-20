@@ -8,7 +8,7 @@ impl<T> Monoid for Vec<T> {
 
 #[cfg(test)]
 mod tests {
-    use crate::monoid::*;
+    use crate::functional::monoid::*;
 
     #[test]
     fn mempty_test() {

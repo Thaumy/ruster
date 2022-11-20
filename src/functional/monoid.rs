@@ -1,4 +1,4 @@
-use crate::semigroup::Semigroup;
+use crate::functional::semigroup::Semigroup;
 
 pub trait Monoid: Semigroup {
     fn mempty() -> Self;

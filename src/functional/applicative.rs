@@ -1,4 +1,4 @@
-use crate::functor::Functor;
+use crate::functional::functor::Functor;
 
 pub trait Applicative: Functor {
     type ApTo<A: Clone>: Applicative<Val=A>;

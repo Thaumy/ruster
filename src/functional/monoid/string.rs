@@ -8,7 +8,7 @@ impl Monoid for String {
 
 #[cfg(test)]
 mod tests {
-    use crate::monoid::*;
+    use crate::functional::monoid::*;
 
     #[test]
     fn mempty_test() {
