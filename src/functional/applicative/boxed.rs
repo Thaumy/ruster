@@ -17,7 +17,7 @@ impl<T> Applicative for Box<T> {
 
 #[cfg(test)]
 mod tests {
-    use crate::applicative::*;
+    use crate::functional::applicative::*;
 
     #[test]
     fn pure_test() {

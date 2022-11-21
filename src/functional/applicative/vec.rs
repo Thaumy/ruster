@@ -23,7 +23,7 @@ impl<T> Applicative for Vec<T> {
 
 #[cfg(test)]
 mod tests {
-    use crate::applicative::*;
+    use crate::functional::applicative::*;
 
     #[test]
     fn pure_test() {

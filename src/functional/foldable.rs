@@ -1,4 +1,4 @@
-use crate::monoid::Monoid;
+use crate::functional::monoid::Monoid;
 
 pub trait Foldable {
     type Item;

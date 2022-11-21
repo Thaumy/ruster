@@ -39,7 +39,13 @@ pub mod sized;
 
 #[cfg(test)]
 mod test {
-    use crate::function::*;
+    use crate::functional::function::*;
+
+    #[test]
+    fn id_test() {
+        let a = 1;
+        assert_eq!(1, id(a))
+    }
 
     #[test]
     fn id_test() {

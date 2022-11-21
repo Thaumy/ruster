@@ -1,9 +1,7 @@
 #![feature(type_alias_impl_trait)]
+#![feature(core_panic)]
 
-pub mod functor;
-pub mod applicative;
-pub mod monoid;
-pub mod semigroup;
-pub mod monad;
-pub mod foldable;
-pub mod function;
+extern crate core;
+
+pub mod ext;
+pub mod functional;

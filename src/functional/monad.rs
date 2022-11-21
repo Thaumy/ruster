@@ -1,5 +1,5 @@
-use crate::applicative::Applicative;
-use crate::functor::Functor;
+use crate::functional::applicative::Applicative;
+use crate::functional::functor::Functor;
 
 pub trait Monad: Applicative {
     type BindOut<B>: Monad<Val=B>;

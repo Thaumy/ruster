@@ -1,4 +1,4 @@
-use crate::monad::Monad;
+use crate::functional::monad::Monad;
 
 impl<T> Monad for Box<T> {
     type BindOut<B> = Box<B>;
@@ -12,7 +12,7 @@ impl<T> Monad for Box<T> {
 
 #[cfg(test)]
 mod test {
-    use crate::monad::*;
+    use crate::functional::monad::*;
 
     #[test]
     fn unit_test() {

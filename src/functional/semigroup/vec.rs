@@ -10,7 +10,7 @@ impl<T> Semigroup for Vec<T> {
 
 #[cfg(test)]
 mod tests {
-    use crate::semigroup::*;
+    use crate::functional::semigroup::*;
 
     #[test]
     fn sappend_test() {

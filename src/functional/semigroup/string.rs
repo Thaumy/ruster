@@ -10,7 +10,7 @@ impl Semigroup for String {
 
 #[cfg(test)]
 mod tests {
-    use crate::semigroup::*;
+    use crate::functional::semigroup::*;
 
     #[test]
     fn sappend_test() {
