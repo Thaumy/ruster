@@ -1,6 +1,6 @@
 use std::borrow::Borrow;
 use crate::functional::foldable::Foldable;
-use crate::functional::function::flip;
+use crate::ext::closure::flip;
 
 impl<A> Foldable for Vec<A> {
     type Item = A;
