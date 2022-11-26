@@ -12,7 +12,7 @@ pub fn ne<T>(a: &T, b: &T) -> bool
 
 #[cfg(test)]
 mod test {
-    use crate::ext::partial_eq::*;
+    use crate::util::partial_eq::*;
 
     #[test]
     fn eq_test() {

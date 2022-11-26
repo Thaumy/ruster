@@ -1,8 +1,6 @@
 pub trait Functor {
     type Val;
-    //type FmapOut<B>: Functor<Val=B>;
-    //type FmapOut<B>: Functor;
-    type FmapOut<B>;//受限于语言特性，这是一个约束不足的Functor
+    type FmapOut<B>: Functor<Val=B>;
 
     fn fmap<F, B>(self, f: &F) -> Self::FmapOut<B>
         where F: Fn(Self::Val) -> B;
@@ -15,7 +13,7 @@ pub fn fmap<T, F, B>(t: T, f: &F) -> T::FmapOut<B>
     t.fmap(f)
 }
 
-pub mod boxed;
+//pub mod boxed;
 pub mod option;
 pub mod result;
 pub mod vec;
