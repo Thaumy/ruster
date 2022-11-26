@@ -1,3 +1,4 @@
+//TODO deprecated impl
 use super::Functor;
 
 impl<A> Functor for Box<A> {
