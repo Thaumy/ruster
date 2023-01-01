@@ -30,6 +30,9 @@ mod tests {
 
         let b: Result<i32, String> = pure(1);
         assert_eq!(Ok(1), b);
+
+        let c = 1.pure_to::<Result<i32, String>>();
+        assert_eq!(Ok(1), c);
     }
 
     #[test]

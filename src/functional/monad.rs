@@ -27,6 +27,16 @@ pub fn bind<T, F, B>(t: T, f: &F) -> T::BindOut<B>
     t.bind(f)
 }
 
+pub trait MonadExt: Sized {
+    fn unit_to<T>(self) -> T
+        where T: Monad<Val=Self>,
+    {
+        T::unit(self)
+    }
+}
+
+impl<T: Sized> MonadExt for T {}
+
 //pub mod boxed;
 pub mod option;
 pub mod result;

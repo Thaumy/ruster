@@ -23,6 +23,16 @@ pub fn ap<T, A: Copy, B>(t: T, a: T::ApTo<A>) -> T::ApOut<B>
     t.ap(a)
 }
 
+pub trait ApplicativeExt: Sized {
+    fn pure_to<T>(self) -> T
+        where T: Applicative<Val=Self>
+    {
+        T::pure(self)
+    }
+}
+
+impl<T: Sized> ApplicativeExt for T {}
+
 //pub mod boxed;
 pub mod option;
 pub mod result;

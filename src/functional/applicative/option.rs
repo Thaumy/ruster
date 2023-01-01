@@ -30,6 +30,9 @@ mod tests {
 
         let b: Option<i32> = pure(1);
         assert_eq!(Some(1), b);
+
+        let c = 1.pure_to::<Option<i32>>();
+        assert_eq!(Some(1), c);
     }
 
     #[test]

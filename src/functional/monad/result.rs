@@ -19,14 +19,14 @@ mod test {
 
     #[test]
     fn unit_test() {
-        {
-            let a = Result::<i32, String>::unit(1);
-            assert_eq!(Ok(1), a)
-        }
-        {
-            let a: Result<i32, String> = unit(1);
-            assert_eq!(Ok(1), a)
-        }
+        let a = Result::<i32, String>::unit(1);
+        assert_eq!(Ok(1), a);
+
+        let b: Result<i32, String> = unit(1);
+        assert_eq!(Ok(1), b);
+
+        let c = 1.unit_to::<Result<i32, String>>();
+        assert_eq!(Ok(1), c);
     }
 
     #[test]

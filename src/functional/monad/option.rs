@@ -19,14 +19,14 @@ mod test {
 
     #[test]
     fn unit_test() {
-        {
-            let a = Option::<i32>::unit(1);
-            assert_eq!(Some(1), a)
-        }
-        {
-            let a: Option<i32> = unit(1);
-            assert_eq!(Some(1), a)
-        }
+        let a = Option::<i32>::unit(1);
+        assert_eq!(Some(1), a);
+
+        let b: Option<i32> = unit(1);
+        assert_eq!(Some(1), b);
+
+        let c = 1.unit_to::<Option<i32>>();
+        assert_eq!(Some(1), c);
     }
 
     #[test]
