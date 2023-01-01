@@ -1,2 +1,70 @@
-/target
-/Cargo.lock
+# bin
+*.class
+*.com
+*.dll
+*.exe
+*.obj
+*.so
+*.o
+*.a
+
+# archive
+*.dmg
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.7z
+*.gz
+*.xz
+
+# log
+lerna-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+npm-debug.log*
+*.log
+
+# os
+System Volume Information
+.Spotlight-V100
+$Recycle.Bin
+ehthumbs.db
+.Trash-1000
+.DS_Store?
+.DS_Store
+Thumbs.db
+.Trashes
+._*
+
+# pkg manager
+node_modules
+.gradle
+.nuget
+.yarn
+.npm
+
+# editor
+.vscode
+.idea
+.vs
+
+# local env
+.env.*.local
+.env.local
+
+# cmake
+cmake-build-debug-coverage
+cmake-build-debug
+
+# build
+dist_electron
+.output
+target
+build
+.nuxt
+dist
+bin
+obj
